@@ -9,7 +9,7 @@ import string
 from dotenv import load_dotenv
 from trlogic import *
 
-import hikari       # discord bot api
+import hikari       # discord api wrapper
 import lightbulb    # command framework for hikari
 import aiosqlite
 
@@ -61,30 +61,32 @@ async def help(ctx):
 > ***Player names must be unique***
 > *If you don't play ranked just use an educated guess on where you'd be placed. Be honest!*
 > 
-> All ranks except 'pro' have 3 levels. Use lowercase. Eg. d1, d2, d3 (d1 < d2 < d3).
+> All ranks except 'pro' have 3 levels. Use **lowercase**. Eg. d1, d2, d3 (d1 < d2 < d3)
 > Add rank 'pro' for anyone with a rank **higher** than d3.
 > Add rank 'b1' for anyone with a rank **lower** than bronze eg. iron.
 > Therefore, to add a rank of silver 3, input **s3**.
 > 
-> Acceptable ranks:
+> **Acceptable ranks:**
 > *bronze(b), silver(s), gold(g), platinum(p), diamond(d) or pro*
 
 ```/tr remove_player - Removes a player from the database based on their name```
 ```/tr edit_player - Allows you to edit a players rank```
 ```/tr start - Use this command to generate two randomized teams based on a weighted elo system```
-> *Add a space after every player, but all players are added as a single string.*
-> *Make sure to add every players name as it is in the database.* 
+> *Add a space after every player, but all players are added as a single string under **'names'**.*
+> *Make sure to add every players name **exactly** as it is in the database.*
+> *If the power level difference between the teams is **> 4**, consider generating teams again.*
 > 
 > *Example input: 'john jeff jeoff jim gym'*
 
 **Map commands:**
 ```/tr maps - Lists all the maps in the database```
-```/tr add_map - Allows you to add a map into the database database```
+```/tr add_map - Allows you to add a map into the database```
 ```/tr remove_map - Allows you to remove a map from the database```
 ```/tr pick_map - Picks a random map from the database```
                 """,
                 color = hikari.Color.from_hex_code("#088F8F")
             )
+            help_embed.set_footer("TeamRandomizerBot by Basyl")
             await ctx.respond(help_embed)
         await db.commit()
 
@@ -104,7 +106,7 @@ async def add_player(ctx):
             name = ctx.options.name
             if data or rank not in accepted_ranks or len(name) > 25:
                 add_embed_fail = hikari.Embed(
-                    title = "Failed to add player", 
+                    title = "Failed to Add Player", 
                     description = f"""!ERROR! Player: **{ctx.options.name}** already exists or rank: **{ctx.options.rank}** is not valid
 > refer to '/tr help' for player name and rank rules.
                     """,
@@ -114,8 +116,8 @@ async def add_player(ctx):
             else:
                 await cursor.execute("INSERT INTO users (name, rank) VALUES (?, ?)", (ctx.options.name, ctx.options.rank,))
                 add_embed_success = hikari.Embed(
-                    title = "Player successfully added", 
-                    description = f"Player: **{ctx.options.name}** has been added with rank: **{ctx.options.rank}**",
+                    title = "Player Successfully Added", 
+                    description = f"Player: **{ctx.options.name}** has been added (rank: **{ctx.options.rank}**)",
                     color = hikari.Color.from_hex_code("#32CD32")
                 )
                 await ctx.respond(add_embed_success)
@@ -135,14 +137,14 @@ async def remove_player(ctx):
             if data:
                 await cursor.execute("DELETE FROM users WHERE name = ?", (ctx.options.name,))
                 remove_embed_success = hikari.Embed(
-                    title = "Player successfully removed", 
+                    title = "Player Successfully Removed", 
                     description = f"Player: **{ctx.options.name}** has been deleted",
                     color = hikari.Color.from_hex_code("#32CD32")
                 )
                 await ctx.respond(remove_embed_success)
             else:
                 remove_embed_fail = hikari.Embed(
-                    title = "Failed to remove player", 
+                    title = "Failed to Remove Player", 
                     description = f"""!ERROR! Player: **{ctx.options.name}** does not exist
 > refer to '/tr help' for player name and rank rules.
                     """,
@@ -167,14 +169,14 @@ async def edit_player(ctx):
             if data and rank in accepted_ranks:
                 await cursor.execute("UPDATE users SET rank = ? WHERE name = ?", (ctx.options.rank, ctx.options.name,))
                 edit_embed_success = hikari.Embed(
-                    title = "Player successfully edited", 
+                    title = "Player Successfully Edited", 
                     description = f"Player: **{ctx.options.name}** has a new rank: **{ctx.options.rank}**",
                     color = hikari.Color.from_hex_code("#32CD32")
                 )
                 await ctx.respond(edit_embed_success)                
             else:
                 edit_embed_fail = hikari.Embed(
-                    title = "Failed to remove player", 
+                    title = "Failed to Edit Player", 
                     description = f"""!ERROR! Player: **{ctx.options.name}** does not exist or rank: **{ctx.options.rank}** is not valid
 > refer to '/tr help' for player name and rank rules.
                     """,
@@ -198,7 +200,7 @@ async def players(ctx):
             players_embed = hikari.Embed(
                 title = "List of Players", 
                 description = players_string,
-                color = hikari.Color.from_hex_code("#7341BF")
+                color = hikari.Color.from_hex_code("#E37383")
             )
             await ctx.respond(players_embed)    
         await db.commit()
@@ -216,7 +218,7 @@ async def pick_map(ctx):
             data = await cursor.fetchall()
             # error_embed
             error_embed = hikari.Embed(
-                    title = "Failed to generate teams", 
+                    title = "Failed to Generate Teams", 
                     description = f"""!ERROR! Make sure player names were inputted correctly and you enter atleast 2 names
 > refer to '/tr help' for TRBot rules.
                     """,
@@ -244,30 +246,41 @@ async def pick_map(ctx):
                     player_profile = (player, rank_value)
                     players_playing.append(player_profile)
             # randomize teams
+            # Returns (team 1, team 2, team 1 power, team 2 power)
             balanced_teams = randomize(players_playing)
             
             # Formatting output for teams using the tuple returned from randomize()
             team_1 = balanced_teams[0]
             team_2 = balanced_teams[1]
-            team_1_string = ">>> "
-            for player in team_1:
-                team_1_string += f"```{player}``` "
-            team_2_string = ">>> "
-            for player in team_2:
-                team_2_string += f"```{player}``` "
+            team_1_pwr = balanced_teams[2]
+            team_2_pwr = balanced_teams[3]
 
-            team_1_embed = hikari.Embed(
-                title = "Team 1", 
-                description = team_1_string,
-                color = hikari.Color.from_hex_code("#C8AD33")
+            display_string = ">>> "
+            display_string += f"**Team 1** *(power level: {team_1_pwr})*\n"
+            display_string += "```\n"
+            for index in range(0, len(team_1)):
+                if index == (len(team_1)-1):
+                    display_string += f"{team_1[index]}"  
+                    break
+                display_string += f"{team_1[index]} \n"
+            display_string += " ```"
+            display_string += "-------------------------------\n"
+            display_string += f"**Team 2** *(power level: {team_2_pwr})*\n"
+            display_string += "```\n"
+            for index in range(0, len(team_2)):
+                if index == (len(team_2)-1):
+                    display_string += f"{team_2[index]}"  
+                    break
+                display_string += f"{team_2[index]} \n"
+            display_string += " ```"
+
+            final_title = find_title()
+            final_embed = hikari.Embed(
+                title = final_title, 
+                description = display_string,
+                color = hikari.Color.from_hex_code("#088F8F"),
             )
-            team_2_embed = hikari.Embed(
-                title = "Team 2", 
-                description = team_2_string,
-                color = hikari.Color.from_hex_code("#C8AD33")
-            )
-            await ctx.respond(team_1_embed)    
-            await ctx.respond(team_2_embed)  
+            await ctx.respond(final_embed)    
         await db.commit()
 
 # children commands for maps
@@ -285,7 +298,7 @@ async def add_map(ctx):
             name = ctx.options.name
             if data or len(name) > 25:
                 add_embed_fail = hikari.Embed(
-                    title = "Failed to add map", 
+                    title = "Failed to Add Map", 
                     description = f"""!ERROR! Map: **{ctx.options.name}** already exists
 > refer to '/tr help' for TRBot rules.
                     """,
@@ -295,7 +308,7 @@ async def add_map(ctx):
             else:
                 await cursor.execute("INSERT INTO maps (name) VALUES (?)", (ctx.options.name,))
                 add_embed_success = hikari.Embed(
-                    title = "Map successfully added", 
+                    title = "Map Successfully Added", 
                     description = f"Map: **{ctx.options.name}** has been added",
                     color = hikari.Color.from_hex_code("#32CD32")
                 )
@@ -316,14 +329,14 @@ async def remove_map(ctx):
             if data:
                 await cursor.execute("DELETE FROM maps WHERE name = ?", (ctx.options.name,))
                 remove_embed_success = hikari.Embed(
-                    title = "Map successfully removed", 
+                    title = "Map Successfully Removed", 
                     description = f"Map: **{ctx.options.name}** has been deleted",
                     color = hikari.Color.from_hex_code("#32CD32")
                 )
                 await ctx.respond(remove_embed_success)
             else:
                 remove_embed_fail = hikari.Embed(
-                    title = "Failed to remove map", 
+                    title = "Failed to Remove Map", 
                     description = f"""!ERROR! Map: **{ctx.options.name}** does not exist
 > refer to '/tr help' for TRBot rules.
                     """,
@@ -348,7 +361,7 @@ async def maps(ctx):
             maps_embed = hikari.Embed(
                 title = "List of Maps", 
                 description = maps_string,
-                color = hikari.Color.from_hex_code("#7341BF")
+                color = hikari.Color.from_hex_code("#E37383")
             )
             await ctx.respond(maps_embed)    
         await db.commit()
@@ -365,9 +378,9 @@ async def pick_map(ctx):
             data = await cursor.fetchall()
             chosen_map = pick_random_map(data)
             maps_embed = hikari.Embed(
-                title = "Map selected:", 
+                title = "Map Selected:", 
                 description = f"**{chosen_map.upper()}**",
-                color = hikari.Color.from_hex_code("#C8AD33")
+                color = hikari.Color.from_hex_code("#088F8F")
             )
             await ctx.respond(maps_embed)    
         await db.commit()
