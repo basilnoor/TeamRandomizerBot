@@ -13,16 +13,11 @@ import hikari       # discord api wrapper
 import lightbulb    # command framework for hikari
 import aiosqlite
 
-
-# hikari, hikari-lightbulb, dotenv, sqlite3, aiosqlite, 
-
 # Initializing dotenv and bot w/discord token
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
-GARP_GUILD = os.getenv("GARP_GUILD")
 bot = lightbulb.BotApp(
     token = TOKEN,
-    default_enabled_guilds=(int(GARP_GUILD))
 )
 
 # Connecting bot to SQLite and creating a database
