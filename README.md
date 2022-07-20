@@ -25,3 +25,8 @@ To view all the possible commands for the bot type "/tr".
 TRbot utilizes group commands with the prefix /tr to make it easier for the user
 ```
 <img src= "https://user-images.githubusercontent.com/51865580/179876423-5d95d078-16e5-4789-a226-f7ce7aa10102.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179876423-5d95d078-16e5-4789-a226-f7ce7aa10102.png" />
+
+```
+To get help on how to use the commands and there limitations use "/tr help"
+```
+<img src= "https://user-images.githubusercontent.com/51865580/179876419-0fa63fa7-310d-4ccf-8ecf-cd6782ff4999.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179876419-0fa63fa7-310d-4ccf-8ecf-cd6782ff4999.png" />
