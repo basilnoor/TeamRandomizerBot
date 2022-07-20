@@ -8,18 +8,20 @@
 
 <br />
 Project Goals:
-
+```
 - .....
-
+```
+```
 Future Goals:
 - Host discord bot online so users can simply invite the TR bot into their discord server and use it freely.
   - *Currently trying to find a free hosting service with persistance. Since TR bot utilizes SQLite3 for its database
   the hosting service has to consistantly update the database so that adding, removing, and editing players is instant
   for the user.*
+```
 <br />
 <br />
 
-Documentation
+Documentation:
 ``` 
 Here i will go over how to use the bot and all its functionality 
 ```
