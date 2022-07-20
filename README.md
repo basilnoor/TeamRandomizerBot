@@ -20,4 +20,4 @@ Future Goals:
 <br />
 
 Documentation
-> Here i will go over how to use the bot and all its functionality
+""" Here i will go over how to use the bot and all its functionality """
