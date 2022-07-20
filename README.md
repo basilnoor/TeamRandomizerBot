@@ -1,4 +1,4 @@
-# TeamRandomizerBot <img src= "https://user-images.githubusercontent.com/51865580/179876418-0e8028b6-602c-4c2a-88d2-3326604889bd.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179876418-0e8028b6-602c-4c2a-88d2-3326604889bd.png" />
+# TeamRandomizerBot <img src= "https://user-images.githubusercontent.com/51865580/179876417-d2feba7c-43e9-40fb-997c-fbb16f98d14b.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179876417-d2feba7c-43e9-40fb-997c-fbb16f98d14b.png" width = "200" height = "200" />
 
 > *If you wish to use this bot in your discord server simply clone the repository and run the trbot.py file.*
 
