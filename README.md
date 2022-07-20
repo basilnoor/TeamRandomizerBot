@@ -8,13 +8,18 @@
 
 <br />
 Project Goals:
-- .....
+- Create a TeamRandomizer discord bot capable of randomly generating two teams based on a weighted skill system.
+- Discord bot coded in Python and utilizes Hikari API to setup the bot and the lightbulb library (a framework to utilize the commands in discord)
+- Utilizes SQLite3 as a database to store players and maps.
+- Provide an appealing interface with various functionality for the user to add, remove, and edit players.
 
 Future Goals:
 - Host discord bot online so users can simply invite the TR bot into their discord server and use it freely.
   - *Currently trying to find a free hosting service with persistance. Since TR bot utilizes SQLite3 for its database
   the hosting service has to consistantly update the database so that adding, removing, and editing players is instant
   for the user.*
+- Add an easier way for users to rebalance teams 
+  - *Currently users must redo the "/tr start" command.*
 <br />
 <br />
 
