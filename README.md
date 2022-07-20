@@ -50,7 +50,7 @@ On success the bot will return the success embed as shown below:
 On failure the bot will return the failed embed as shown below:
 
 The same principle applies for removing players, editing players, adding maps, and removing maps.
-The bot will always return the appropraite embed with comments.
+The bot will always return the appropraite embed.
 ```
 <img src= "https://user-images.githubusercontent.com/51865580/179876415-d61b7d85-4c83-4073-934a-fbc88546109d.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179876415-d61b7d85-4c83-4073-934a-fbc88546109d.png" />
 
@@ -69,7 +69,7 @@ Main function:
 To generate two randomzied teams of equal level use the command "/tr start"
 
 The resulting power levels of the teams is provided for the user in case they would like 
-to potentially rebalance the teams as the algorithm isn't perfect.
+to potentially rebalance the teams as the algorithm isn't perfect. More info in "/tr help".
 ```
 <img src= "https://user-images.githubusercontent.com/51865580/179881018-77ca463a-22c5-43dc-9ce9-af27915cf779.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179881018-77ca463a-22c5-43dc-9ce9-af27915cf779.png" />
 
