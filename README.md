@@ -23,7 +23,6 @@ Future Goals:
 <br />
 <br />
 
->>> 
 Documentation:
 > *Here i will go over how to use the bot and its functionality.*
 ``` 
@@ -77,4 +76,3 @@ to potentially rebalance the teams as the algorithm isn't perfect. More info in 
 To randomly select a Map from the database use "/tr pick_map".
 ```
 <img src= "https://user-images.githubusercontent.com/51865580/179881026-c576f1ed-8a4f-4a11-a764-5faa4780d24a.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179881026-c576f1ed-8a4f-4a11-a764-5faa4780d24a.png" />
->>>
