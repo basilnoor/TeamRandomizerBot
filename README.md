@@ -19,9 +19,8 @@ Future Goals:
 <br />
 
 Documentation:
+> *Here i will go over how to use the bot and all its functionality.*
 ``` 
-Here i will go over how to use the bot and all its functionality.
-
 To view all the bots commands type "/tr".
 Bot utilizes group commands with the prefix /tr to make it easier for the user
 ```
