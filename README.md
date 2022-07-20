@@ -49,7 +49,7 @@ The bot will always return the appropraite embed with comments.
 <img src= "https://user-images.githubusercontent.com/51865580/179876415-d61b7d85-4c83-4073-934a-fbc88546109d.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179876415-d61b7d85-4c83-4073-934a-fbc88546109d.png" />
 
 ```
-To check all the players in the database currently use "/tr players".
+To check all the players currently in the database use "/tr players".
 ```
 <img src= "https://user-images.githubusercontent.com/51865580/179876421-66d6174e-638b-476e-bb56-ae6b6dd59eee.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179876421-66d6174e-638b-476e-bb56-ae6b6dd59eee.png" />
 
@@ -57,3 +57,18 @@ To check all the players in the database currently use "/tr players".
 Similarly, the same can be done for "/tr maps".
 ```
 <img src= "https://user-images.githubusercontent.com/51865580/179876420-668175dc-8adc-488e-80cd-e105b8655836.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179876420-668175dc-8adc-488e-80cd-e105b8655836.png" />
+
+```
+Main function:
+To generate two randomzied teams of equal level use the command "/tr start"
+
+Input every players name as entered in the database. 
+The resulting power levels of the teams is provided to show if the user would like to potentially rebalance
+as the algorithm isn't perfect.
+```
+<img src= "https://user-images.githubusercontent.com/51865580/179881018-77ca463a-22c5-43dc-9ce9-af27915cf779.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179881018-77ca463a-22c5-43dc-9ce9-af27915cf779.png" />
+
+```
+To randomly select a Map from the database use "/tr pick_map".
+```
+<img src= "https://user-images.githubusercontent.com/51865580/179881026-c576f1ed-8a4f-4a11-a764-5faa4780d24a.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179881026-c576f1ed-8a4f-4a11-a764-5faa4780d24a.png" />
