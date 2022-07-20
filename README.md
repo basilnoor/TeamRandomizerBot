@@ -18,3 +18,8 @@ Future Goals:
   for the user.*
 <br />
 <br />
+
+Documentation
+"""
+Here i will go over how to use the bot and all its functionality
+"""
