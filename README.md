@@ -62,9 +62,8 @@ Similarly, the same can be done for "/tr maps".
 Main function:
 To generate two randomzied teams of equal level use the command "/tr start"
 
-Input every players name as entered in the database. 
-The resulting power levels of the teams is provided to show if the user would like to potentially rebalance
-as the algorithm isn't perfect.
+The resulting power levels of the teams is provided for the user in case they would like 
+to potentially rebalance the teams as the algorithm isn't perfect.
 ```
 <img src= "https://user-images.githubusercontent.com/51865580/179881018-77ca463a-22c5-43dc-9ce9-af27915cf779.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179881018-77ca463a-22c5-43dc-9ce9-af27915cf779.png" />
 
