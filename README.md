@@ -23,6 +23,7 @@ Future Goals:
 <br />
 <br />
 
+>>> 
 Documentation:
 > *Here i will go over how to use the bot and its functionality.*
 ``` 
