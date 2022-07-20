@@ -6,7 +6,7 @@
 <img src= "https://user-images.githubusercontent.com/51865580/179876418-0e8028b6-602c-4c2a-88d2-3326604889bd.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179876418-0e8028b6-602c-4c2a-88d2-3326604889bd.png" />
 </p>
 
-<br />
+
 Project Goals:
 - Create a TeamRandomizer discord bot capable of randomly generating two teams based on a weighted skill system.
 - Discord bot coded in Python and utilizes Hikari API to setup the bot and the lightbulb library (a framework to utilize the commands in discord)
