@@ -2,6 +2,7 @@
 
 *If you wish to use this bot in your discord server simply clone the repository and run the trbot.py file.*
 
+<br />
 Project Goals:
 
 - .....
