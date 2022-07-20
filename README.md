@@ -1,5 +1,9 @@
 # TeamRandomizerBot
 
+Note:
+- For now, if you wish to use this bot in your discord server simply clone the repository and run the trbot.py file.
+- Currently, working on hosting it live so you would only have to invite the discord bot.
+
 
 Project Goals:
 
