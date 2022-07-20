@@ -21,4 +21,5 @@ Future Goals:
 Documentation:
 ``` 
 Here i will go over how to use the bot and all its functionality 
+<img src= "https://user-images.githubusercontent.com/51865580/179876417-d2feba7c-43e9-40fb-997c-fbb16f98d14b.png" data-canonical-src= "https://user-images.githubusercontent.com/51865580/179876417-d2feba7c-43e9-40fb-997c-fbb16f98d14b.png" width="400" height="400" />
 ```
