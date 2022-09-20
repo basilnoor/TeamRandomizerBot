@@ -6,6 +6,9 @@
 </p>
 <br / >
 
+### Languages/Frameworks/Tools used:
+
+- Python, Hikari API, Hikari-lightbulb, Markdown, Visual studio code
 
 ### Project Goals:
 
